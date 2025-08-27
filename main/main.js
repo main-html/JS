@@ -2,7 +2,7 @@
 # Main JS is a modern, lightweight and portable website JavaScript framework, Copyright (C) 2025 Andy Futcher. See <https://mainjs.org/> for more
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
-## Main.JS not modified from original. Date: 2025-08-01 ### */
+## Main.JS not modified from original. Date: 2025-08-26 ### */
 
 /* Main.JS Bootloader */
 main=window.main||window['main']||{};main.js=main.js||{create:{}};let create=main.js.create; // Main Namespaces
