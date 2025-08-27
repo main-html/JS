@@ -9,7 +9,7 @@ main=window.main||window['main']||{};main.js=main.js||{create:{}};let create=mai
 switch(typeof main.js.loaded){case 'boolean':if(main.js.timestamp.loaded){console.warn("Main.JS has been loaded more than once, check the <head> for duplicate snippet installations or main.js script requests.");};case 'object':break;case 'undefined':main.js.loaded=null;default: // Loading Wrapper
 
 /* Main.JS Declarations */
-main.js.version={sem:{main:0,minor:7,patch:0},branch:'rc'};let version=main.js.version; // This Library Version
+main.js.version={sem:{main:0,minor:7,patch:2},branch:'rc'};let version=main.js.version; // This Library Version
 main.js.inherit=function(prefix,js='js'){if(!js){main[prefix]=main[prefix]||{};return main[prefix];}else{main[js][prefix]=main[js][prefix]||{};};return main[js][prefix];}; // Main.JS Inherit Function
 main.js=Object.assign(main.js,{loading:false,timestamp:{init:parseInt(Date.now())}});let timestamp=main.js.timestamp; // Common Elements;
 main.js.proto=Object.assign(main.js.inherit('proto'),{https:'https:',http:'http:',file:'file:',fs:'/',fs2:'//',s:'s',p:'.',px:'px',pc:"%",q:'?',a:'&',qa:'?&',e:'=',d:'-',n:' ',nb:"\u00A0",br:"\n"});let proto=main.js.proto; // Common Protcols
@@ -281,7 +281,17 @@ consent.banner=function(){if(!main.body.loaded){return;};let show=false,type=nul
 };
 
 /* Main.JS Networking */
-network.renderer=function(name){if((!main.user.persistence)||(network.capable==false)){return;};name=name.replace(regex.urls,''); // Fetch Parser
+network.opener=function(event){let element=event.target;switch(types.string){case typeof element.href:break;case typeof element.parentElement.href:element=event.target.parentElement;break;case typeof element.parentElement.parentElement.href:element=event.target.parentElement.parentElement;}
+	if((typeof event.type!=types.string)||(!element.attributes[attribute.href])){return;};let href=element.attributes[attribute.href].value;
+	switch(event.type.toLowerCase()){case types.mousedown: // Right-click Handler
+		if((event.button==2)&&(window.location.protocol==proto.file)&&((href.length==0)||(href.substring(href.length-1)==proto.fs))){element.setAttribute(attribute.href,href+'main.html');}; // Direct Pathing
+	break;case types.keydown: // Keyboard Handler
+		if(typeof event.key==types.string){switch(event.key.toLowerCase()){case "enter": break;default: return;};}else{return;}; // Only Specific Keys
+	case types.click: // Click Handler (no Break)
+		if((window.location.protocol==proto.file)&&((href.length==0)||(href.substring(href.length-1)==proto.fs))){element.setAttribute(attribute.href,href+'main.html');href+='main.html';}; // Direct Pathing
+		if(network.capable){;if(network.fetcher(href,{method:'GET'},{type:'text/html'})){event.preventDefault();};}; // Call Fetch & Suppress Click
+	}; // Interactions Caught
+};network.renderer=function(name){if((!main.user.persistence)||(network.capable==false)){return;};name=name.replace(regex.urls,''); // Fetch Parser
 	if((typeof network.responses[name]!=types.object)||(typeof network.responses[name].url!=types.string)){return;}; // Unknown URL Path
 	let url=network.responses[name].url,target=null,source=null,destination=network.responses[name].purpose.target||network.responses[name].purpose.append; // Collect Valid Source & Target
 	switch(network.responses[name].type){case 'text/html': if((!network.responses[name].document.doctype)||((network.responses[name].document.doctype.name!='html'))){return;}; // Valid HTML Page
@@ -314,25 +324,16 @@ network.renderer=function(name){if((!main.user.persistence)||(network.capable==f
 				}; // Done Source
 			}; // Done Replacement
 			main.hydrate.render(); // Call Render Hydration
-			if(!!network.responses[name].purpose.navigation){main.hydrate.click.forEach(func=>func());main.body.main.focus();}; // Navigation Click Focus
-			if(document.body.scrollTop-main.page.pageTop>window.outerHeight*3){css.add("body-scroll",'body { scroll-behavior: auto; }');}; // Temporarily Diable Smooth Scrolling
-			document.body.scrollTop=main.page.pageTop; // Scroll Changes
-			css.add("body-scroll",'body { scroll-behavior: smooth; }'); // Re-enable Smooth Scrolling
+			if(!!network.responses[name].purpose.navigation){ // Update Navigation
+				main.hydrate.click.forEach(func=>func());main.body.main.focus(); // Navigation Click Focus
+				if(document.body.scrollTop-main.page.pageTop>window.outerHeight*3){css.add("body-scroll",'body { scroll-behavior: auto; }');}; // Temporarily Diable Smooth Scrolling
+				document.body.scrollTop=main.page.pageTop; // Scroll Changes
+				css.add("body-scroll",'body { scroll-behavior: smooth; }'); // Re-enable Smooth Scrolling
+			}; // Done Navigation 
 			main.events.gtag({event:'main.page.hydrated'});
 		}else{}; //
 	}; // Finished 
-};network.listener=function(event){let element=event.target;switch(types.string){case typeof element.href:break;case typeof element.parentElement.href:element=event.target.parentElement;break;case typeof element.parentElement.parentElement.href:element=event.target.parentElement.parentElement;}
-	if((typeof event.type!=types.string)||(!element.attributes[attribute.href])){return;};let href=element.attributes[attribute.href].value;
-	switch(event.type.toLowerCase()){case types.mousedown: // Right-click Handler
-		if((event.button==2)&&(window.location.protocol==proto.file)&&((href.length==0)||(href.substring(href.length-1)==proto.fs))){element.setAttribute(attribute.href,href+'main.html');}; // Direct Pathing
-	break;case types.keydown: // Keyboard Handler
-		if(typeof event.key==types.string){switch(event.key.toLowerCase()){case "enter": break;default: return;};}else{return;}; // Only Specific Keys
-	case types.click: // Click Handler (no Break)
-		if((window.location.protocol==proto.file)&&((href.length==0)||(href.substring(href.length-1)==proto.fs))){element.setAttribute(attribute.href,href+'main.html');href+='main.html';}; // Direct Pathing
-		if(network.capable){;if(network.fetcher(href,{method:'GET'},{type:'text/html'})){event.preventDefault();};}; // Call Fetch & Suppress Click
-	}; // Interactions Caught
-};//network.fetcher=async function(path=network.test,http="GET",type='text/plain',cache='default',selector='main',body=null){if((network.loading)||(!main.user.persistence)){return;};
-network.fetcher=async function(url=network.test,http={method:'GET',cache:'default',mode:'cors'},headers={type:'text/plain'},purpose={target:''},body=null){if((network.loading)||(!main.user.persistence)){return;};
+};network.fetcher=async function(url=network.test,http={method:'GET',cache:'default',mode:'cors'},headers={type:'text/plain'},purpose={target:''},body=null){if((network.loading)||(!main.user.persistence)){return;};
 	let name=url.replace(regex.urls,''),options={},mime="",problems="";
 	http.method=(!!http.method)?http.method.toUpperCase():'GET';
 	http.cache=(!!http.cache)?http.cache.toLowerCase():'default';
@@ -525,7 +526,7 @@ main.hydrate.load=[function(){ // Reload Hydration
 	document.querySelectorAll('[href]:not(base,link,[rel*="opener"])').forEach((element)=>{if((typeof element==types.object)&&(typeof element.attributes==types.object)){ // Check Opener Mode
 		element.setAttribute(attribute.rel,((!!element.attributes[attribute.rel]?element.attributes[attribute.rel].value:'')+proto.n+'opener').trim()); // Mark Opener Controlled (valid Hydration Target)
 		if((!!element.attributes[attribute.href].value)&&(element.attributes[attribute.href].value.substring(0,1)==proto.fs)){element.attributes[attribute.href].value=element.attributes[attribute.href].value.substring(1);}; // Refactor Base Relative Paths
-		element.addEventListener(types.click,network.listener);element.addEventListener(types.keydown,network.listener);element.addEventListener(types.mousedown,network.listener);
+		element.addEventListener(types.click,network.opener);element.addEventListener(types.keydown,network.opener);element.addEventListener(types.mousedown,network.opener);
 	};});document.querySelectorAll('.hide-empty,[hide-empty]').forEach((element)=>{if((!!element)&&(typeof element==types.object)&&(typeof element.textContent==types.string)){ // Check Empty Containers
 		if((element.textContent.trim()=='')&&(!!element.attributes['data-hidden'])){element.setAttribute('data-hidden','');}else{element.setAttribute('data-hidden','false');}; // Hide Empties
 	};});main.timers.readystatechange=false; // Property Bounds & Defaults
