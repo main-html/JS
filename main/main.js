@@ -9,7 +9,7 @@ main=window.main||window['main']||{};main.js=main.js||{create:{}};let create=mai
 switch(typeof main.js.loaded){case 'boolean':if(main.js.timestamp.loaded){console.warn("Main.JS has been loaded more than once, check the <head> for duplicate snippet installations or main.js script requests.");};case 'object':break;case 'undefined':main.js.loaded=null;default: // Loading Wrapper
 
 /* Main.JS Declarations */
-main.js.version={sem:{main:0,minor:7,patch:2},branch:'dev'};let version=main.js.version; // This Library Version
+main.js.version={sem:{main:0,minor:7,patch:2},branch:'main'};let version=main.js.version; // This Library Version
 main.js.inherit=function(prefix,js='js'){if(!js){main[prefix]=main[prefix]||{};return main[prefix];}else{main[js][prefix]=main[js][prefix]||{};};return main[js][prefix];}; // Main.JS Inherit Function
 main.js=Object.assign(main.js,{loading:false,timestamp:{init:parseInt(Date.now())}});let timestamp=main.js.timestamp; // Common Elements;
 main.js.proto=Object.assign(main.js.inherit('proto'),{https:'https:',http:'http:',file:'file:',fs:'/',fs2:'//',s:'s',p:'.',px:'px',pc:"%",q:'?',a:'&',qa:'?&',e:'=',d:'-',n:' ',nb:"\u00A0",br:"\n"});let proto=main.js.proto; // Common Protcols
