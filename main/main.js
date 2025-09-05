@@ -2,22 +2,22 @@
 # Main JS is a modern, lightweight and portable website JavaScript framework, Copyright (C) 2025 Andy Futcher. See <https://mainjs.org/> for more
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
-## Main.JS not modified from original. Date: 2025-08-26 ### */
+## Main.JS not modified from original. Date: 2025-09-05 ### */
 
 /* Main.JS Bootloader */
 main=window.main||window['main']||{};main.js=main.js||{create:{}};let create=main.js.create; // Main Namespaces
 switch(typeof main.js.loaded){case 'boolean':if(main.js.timestamp.loaded){console.warn("Main.JS has been loaded more than once, check the <head> for duplicate snippet installations or main.js script requests.");};case 'object':break;case 'undefined':main.js.loaded=null;default: // Loading Wrapper
 
 /* Main.JS Declarations */
-main.js.version={sem:{main:0,minor:7,patch:2},branch:'rc'};let version=main.js.version; // This Library Version
+main.js.version={sem:{main:0,minor:7,patch:12},branch:'rc'};let version=main.js.version; // This Library Version
 main.js.inherit=function(prefix,js='js'){if(!js){main[prefix]=main[prefix]||{};return main[prefix];}else{main[js][prefix]=main[js][prefix]||{};};return main[js][prefix];}; // Main.JS Inherit Function
 main.js=Object.assign(main.js,{loading:false,timestamp:{init:parseInt(Date.now())}});let timestamp=main.js.timestamp; // Common Elements;
 main.js.proto=Object.assign(main.js.inherit('proto'),{https:'https:',http:'http:',file:'file:',fs:'/',fs2:'//',s:'s',p:'.',px:'px',pc:"%",q:'?',a:'&',qa:'?&',e:'=',d:'-',n:' ',nb:"\u00A0",br:"\n"});let proto=main.js.proto; // Common Protcols
-main.js.types=Object.assign(main.js.inherit('types'),{window:"window",document:"document",div:"div",img:"img",ol:"ol",button:"button",logo:"logo",search:"search",links:"links",base:"base",main:"main",string:"string",boolean:"boolean",number:"number",integer:"integer",decimal:"decimal",currency:"currency",function:"function",object:"object",aliases:"aliases",click:"click",keydown:"keydown",mousedown:"mousedown",body:"body",nav:"nav",footer:"footer",breadcrumbs:"breadcrumbs",navigation:"navigation",dialog:"dialog",alertdialog:"alertdialog",status:"status",menu:"menu",searchbox:"searchbox",application:"application",account:"account",region:"region",colorscheme:"color-scheme",readerscheme:"reader-scheme",nocodemode:"nocode-mode",hydrate:"hydrate",internal:"internal"});let types=main.js.types; // Common Types
-main.js.classes=Object.assign(main.js.inherit('classes'),{top:"top",scrolled:"scrolled",bottom:"bottom",landscape:"landscape",portrait:"portrait",light:"light",reader:"reader",nocode:"nocode",hide:"hide",menu:"menu"});let classes=main.js.classes; // Common Classes
+main.js.types=Object.assign(main.js.inherit('types'),{window:"window",document:"document",div:"div",img:"img",figure:"figure",picture:"picture",ol:"ol",button:"button",logo:"logo",search:"search",links:"links",base:"base",main:"main",string:"string",boolean:"boolean",number:"number",integer:"integer",decimal:"decimal",currency:"currency",function:"function",object:"object",aliases:"aliases",click:"click",keydown:"keydown",mousedown:"mousedown",body:"body",nav:"nav",footer:"footer",breadcrumbs:"breadcrumbs",navigation:"navigation",dialog:"dialog",alertdialog:"alertdialog",status:"status",menu:"menu",searchbox:"searchbox",application:"application",account:"account",region:"region",colorscheme:"color-scheme",readerscheme:"reader-scheme",nocodemode:"nocode-mode",hydrate:"hydrate",internal:"internal"});let types=main.js.types; // Common Types
+main.js.classes=Object.assign(main.js.inherit('classes'),{top:"top",scrolled:"scrolled",bottom:"bottom",landscape:"landscape",portrait:"portrait",light:"light",reader:"reader",nocode:"nocode",hide:"hide",menu:"menu",application:"application"});let classes=main.js.classes; // Common Classes
 main.js.listen=Object.assign(main.js.inherit('listen'),{parent:{load:'window',readystatechange:'document',resize:'window',scroll:'body',click:'main',mouseleave:'document',mouseenter:'document',blur:'window',focus:'window',beforeunload:'window',unload:'window',popstate:'window'},passively:{load:true,mouseleave:true,mouseenter:true,blur:true,focus:true,beforeunload:true,unload:true,popstate:true,click:true}});let listen=main.js.listen; // Common Listener
 main.js.attribute=Object.assign(main.js.inherit('attribute'),{class:"class",id:"id",href:"href",rel:"rel",role:"role",link:"link",loading:"loading",lazy:"lazy",lang:"lang",region:"region",dialect:"dialect",bucket:"bucket",second:"second",delay:"delay",duration:"duration",open:"open"});let attribute=main.js.attribute; // Common attribute
-main.js.regex=Object.assign(main.js.inherit('regex'),{base:/.*(\:\/\/|public\B|-html\b|-js\b|-dev\b|-rc\b|-main\b|-com\b|-com-[a-z]|-co-[a-z])[a-zA-Z0-9\-\_\.]*/i,domain:/.*\/\/([^:\/\?,]*)/,path:/^[a-zA-Z0-9_~\%\-\.\/]*/i,safe:/[^a-zA-Z0-9_\-]/g,urls:/[^a-zA-Z0-9_~\%\-\.\/\:\?\&\=\@]/g,scale:/scale\(.*\)/gi});let regex=main.js.regex; //
+main.js.regex=Object.assign(main.js.inherit('regex'),{base:/.*(\:\/\/|public\B|-html\b|-js\b|-dev\b|-rc\b|-main\b|-com\b|-com-[a-z]|-co-[a-z])[a-zA-Z0-9\-\_\.]*/i,domain:/.*\/\/([^:\/\?,]*)/,tld:/(.*\/\/)[^\/]+/g,path:/^[a-zA-Z0-9_~\%\-\.\/]*/i,safe:/[^a-zA-Z0-9_\-]/g,urls:/[^a-zA-Z0-9_~\%\-\.\/\:\?\&\=\@]/g,scale:/scale\(.*\)/gi});let regex=main.js.regex; //
 main.js.cookie=Object.assign(main.js.inherit('cookie'),{policy:{'Max-Age':31536000,SameSite:"Lax"},Secure:true});let cookie=main.js.cookie; // Common Cookie Settings
 main.js.browser=Object.assign(main.js.inherit('browser'),{online:null,locale:Intl.DateTimeFormat().resolvedOptions()||{},languages:navigator.languages||['en'],name:((/Firefox/.test(navigator.userAgent)||/FxiOS/.test(navigator.userAgent||''))?'Firefox':(/Apple Computer/.test(navigator.vendor||''))?'Safari':'Chrome')});let browser=main.js.browser;
 main.js.network=Object.assign(main.js.inherit('network'),{loading:false,capable:null,requests:{},responses:{},test:'humans.txt'});let network=main.js.network; // Networking Functions
@@ -141,7 +141,6 @@ main.body=main.body||{};main.body.navigation=main.body[types.navigation]||{};
 main.path=window.location.href.replace(main[types.base],'').match(regex.path)[0]; // Valid Main Path
 main.domain=window.location.hostname.split(proto.p);if((main.domain.length<=2)||(!lookup.ccTLD[main.domain[main.domain.length-2]])){main.domain=(main.domain[main.domain.length-2]||'')+proto.p+main.domain[main.domain.length-1];}else{main.domain=main.domain[main.domain.length-3]+proto.p+main.domain[main.domain.length-2]+proto.p+main.domain[main.domain.length-1];};if(main.domain.length>4){cookie.policy['Domain']=main.domain;};
 main.session=Object.assign({start:timestamp.init,lang:browser.locale.locale||window.navigator.language,region:browser.locale.timeZone.replace(proto.fs,proto.n),language:"English",browser:browser.name.toLowerCase()},JSON.parse(sessionStorage.getItem('main.session'))||JSON.parse(localStorage.getItem('main.session'))||{landing:main.path});
-if(0!=main.meta.canonical.href.toLowerCase().search((main.base+main.path).toLowerCase())){main.meta.robots.content=main.meta.robots.content.replaceAll(/\b(all|follow)\b/gi,'nofollow');}; // Depreciate 404s & Non-canonicals
 
 /* Main.JS Parameters & Referrals */
 main.body.search=new URLSearchParams(window.location.search).forEach((value,key)=>{key=key.replace(regex.safe,'').toLowerCase();if(typeof value==types.string){switch(key){case 'attention':case 'count':case 'landing':case 'start':case 'timer':/*Ignored*/break;case 'browser':if((value=='chrome')||(value=='safari')||(value=='firefox')||(value=='edge')){}else{break;};default:main.session[key]=value;};};});delete main.session[types.internal]; // Overwrite Session Parameters
@@ -185,8 +184,17 @@ main.events=Object.assign({config:track.config,values:JSON.parse(sessionStorage.
 main.font=Object.assign({loaded:false,config:font.config,family:{body:'',headings:'',monospace:'',title:'',footer:''},name:{},request:''},main.font); // Fonts Defaults
 create.font=document.createElement(attribute.link);Object.assign(create.font,{id:'main-font',rel:"stylesheet"}); //
 
-/* Main.JS Menu */
+/* Main.JS Application & Menu */
 main.menu=Object.assign({loaded:false,enabled:false,origin:'sitemap.html',source:'.origin.menu',visible:false},main.menu); // Main Menu
+main.application=Object.assign({visible:false,loaded:null,contact:{enabled:false,origin:'contact.html',source:'.origin.contact'}},main.application); // Main Application
+document.querySelectorAll('meta[property]').forEach((meta)=>{ // Menu & Application Properties
+	switch(meta.attributes.property.value){case null: // Ignore
+	break;case "main.menu.origin": if(main.menu.origin!=meta.attributes.content.value.toLowerCase()){main.menu.origin=meta.attributes.content.value.toLowerCase();main.menu.loaded=false;};main.menu.enabled=true; // Enable Menu & Origin
+	break;case "main.menu.source": if(main.menu.source!=meta.attributes.content.value){main.menu.source=meta.attributes.content.value;main.menu.loaded=false;};main.menu.enabled=true; case "main.menu.enabled": main.menu.enabled=true; // Default True
+	break;case "main.application.contact.origin": if(main.application.contact.origin!=meta.attributes.content.value.toLowerCase()){main.application.contact.origin=meta.attributes.content.value.toLowerCase();};main.application.contact.enabled=true; // Enable Menu & Origin
+	break;case "main.application.contact.source": if(main.application.contact.source!=meta.attributes.content.value){main.application.contact.source=meta.attributes.content.value;};main.application.contact.enabled=true; case "main.application.contact.enabled": main.application.contact.enabled=true;  // Default Contact Application
+	};
+});
 
 /* Main.JS Switches */
 main.switch=main.switch||{};main.switch=Object.assign({loaded:false,custom:{},check:"aria-checked"},main.switch);
@@ -206,14 +214,22 @@ main.button.click=function(event){if((!!event.type)&&(event.type==types.keydown)
 };main.button.custom['menu']=function(event){ // Main Menu Button
 	if((main.menu.enabled)&&(main.path!=main.menu.origin)&&(!main.menu.loaded)){network.fetcher(main.menu.origin,{method:'GET',cache:'force-cache'},{type:'text/html'},{target:'menu',source:main.menu.source,navigation:false});main.menu.loaded=true;}; // Fetch Main Menu
 	if((typeof event==types.object)&&(typeof event.target==types.object)){if(!document.body.classList.contains(classes.menu)){document.body.classList.add(classes.menu);main.body.menu.focus();main.menu.visible=true;}else{document.body.classList.remove(classes.menu);main.menu.visible=false;};};
+};main.button.custom['contact']=function(event){if(!main.application.contact.enabled){return;}; // Consent Manager Button
+	if((main.path!=main.application.contact.origin)&&(main.application.loaded!='contact')){network.fetcher(main.application.contact.origin,{method:'GET',cache:'force-cache'},{type:'text/html'},{target:'application',source:main.application.contact.source,navigation:false});main.application.loaded='contact';}; // Fetch Main Menu
+	if((main.body.loaded)&&(typeof event==types.object)&&(typeof event.target==types.object)){if(!document.body.classList.contains(classes.application)){document.body.classList.add(classes.application);main.body.application.focus();main.application.visible=true;}else{document.body.classList.remove(classes.application);main.application.visible=false;};};
 };main.button.custom['consent']=function(event){ // Consent Manager Button
 	if((typeof event==types.object)&&(typeof event.target==types.object)){consent.update(event.target);};
-};main.button.custom['notification-dismiss']=function(event){let parent=false,update=false;
+};main.button.custom['notification-dismiss']=function(event){let parent=false,update=false; // Dismiss Notification
 	if((typeof event==types.object)&&(typeof event.target==types.object)){ //
 		switch(types.div.toUpperCase()){case event.target.tagName:parent=event.target;break;case event.target.parentElement.tagName:parent=event.target.parentElement;break;case event.target.parentElement.parentElement.tagName:parent=event.target.parentElement.parentElement;break;case event.target.parentElement.parentElement.parentElement.tagName:parent=event.target.parentElement.parentElement.parentElement;};
 		if((typeof parent==types.object)&&(parent!=null)){update=true;parent.remove();if((typeof parent.id==types.string)&&(typeof parent.dataset==types.object)){main.dismiss[parent.id]={id:parent.id,data:{}};main.dismiss[parent.id].data=Object.assign(main.dismiss[parent.id].data,parent.dataset);main.events.gtag({event:'main.dismiss.'+parent.id});};};
 	};if(update){localStorage.setItem('main.dismiss',JSON.stringify(main.dismiss));main.hydrate.resize.forEach(func=>func());if(main.body.status.innerText==''){main.body.status.innerHTML='';};};
+};main.button.custom['application-close']=function(event){ // Close Application
+	if(document.body.classList.contains(classes.application)){document.body.classList.remove(classes.application);main.application.visible=false;}; // Hide Application
 };
+
+/* Main.JS Slideshows */
+main.slideshow=main.slideshow||{};main.slideshow=Object.assign({loaded:false,shows:{},role:"group",description:"slideshow"},main.slideshow);
 
 /* Main.JS Consent */
 main.consent=Object.assign({config:consent.config,datalayer:{functionality_storage:'denied',security_storage:'denied',personalization_storage:'denied',analytics_storage:'denied',ad_storage:'denied',ad_personalization:'denied',ad_user_data:'denied'}},JSON.parse(localStorage.getItem('main.consent'))); // Inherit Consent Settings
@@ -282,12 +298,13 @@ consent.banner=function(){if(!main.body.loaded){return;};let show=false,type=nul
 
 /* Main.JS Networking */
 network.opener=function(event){let element=event.target;switch(types.string){case typeof element.href:break;case typeof element.parentElement.href:element=event.target.parentElement;break;case typeof element.parentElement.parentElement.href:element=event.target.parentElement.parentElement;}
-	if((typeof event.type!=types.string)||(!element.attributes[attribute.href])){return;};let href=element.attributes[attribute.href].value;
+	if((typeof event.type!=types.string)||(!element.attributes[attribute.href])){return;};let href=element.attributes[attribute.href].value,rel=(!!element.attributes[attribute.rel])?element.attributes[attribute.rel].value:'';
 	switch(event.type.toLowerCase()){case types.mousedown: // Right-click Handler
 		if((event.button==2)&&(window.location.protocol==proto.file)&&((href.length==0)||(href.substring(href.length-1)==proto.fs))){element.setAttribute(attribute.href,href+'main.html');}; // Direct Pathing
 	break;case types.keydown: // Keyboard Handler
 		if(typeof event.key==types.string){switch(event.key.toLowerCase()){case "enter": break;default: return;};}else{return;}; // Only Specific Keys
 	case types.click: // Click Handler (no Break)
+		if((/\brelative\b/i.test(rel))&&(regex.tld.test(href))){href=href.replace(regex.tld,'').substring(1);element.setAttribute(attribute.href,href);}; // Convert to Relative Path (has local equiv.)
 		if((window.location.protocol==proto.file)&&((href.length==0)||(href.substring(href.length-1)==proto.fs))){element.setAttribute(attribute.href,href+'main.html');href+='main.html';}; // Direct Pathing
 		if(network.capable){;if(network.fetcher(href,{method:'GET'},{type:'text/html'})){event.preventDefault();};}; // Call Fetch & Suppress Click
 	}; // Interactions Caught
@@ -334,7 +351,7 @@ network.opener=function(event){let element=event.target;switch(types.string){cas
 		}else{}; //
 	}; // Finished 
 };network.fetcher=async function(url=network.test,http={method:'GET',cache:'default',mode:'cors'},headers={type:'text/plain'},purpose={target:''},body=null){if((network.loading)||(!main.user.persistence)){return;};
-	let name=url.replace(regex.urls,''),options={},mime="",problems="";
+	let name=url.replace(regex.urls,''),options={},mime="",warnings="";
 	http.method=(!!http.method)?http.method.toUpperCase():'GET';
 	http.cache=(!!http.cache)?http.cache.toLowerCase():'default';
 	http.mode=(!!http.mode)?http.mode.toLowerCase():(window.location.protocol==proto.file)?'no-cors':'cors';
@@ -345,7 +362,6 @@ network.opener=function(event){let element=event.target;switch(types.string){cas
 	switch(headers.type){case 'text/text':case 'text/txt': headers.type='text/plain';case 'text/plain': mime='text';
 	break;case 'text/htm': headers.type='text/html';case 'text/html': mime="html"; // Handle HTML
 		if(typeof purpose.navigation!=types.boolean){purpose.navigation=true;};if(!purpose.source){purpose.source=types.document;};if((!purpose.target)&&(!purpose.append)){purpose.target=types.document;}; // Default History Source & Target
-		if((url==main.path)&&(url==main.page.path)){return true;}else if((!browser.online)&&(window.location.protocol!=proto.file)){http.mode='same-origin';}; // Overrides
 	break;case 'text/xml':case 'application/xml':case 'image/svg+xml': mime="xml";
 	break;case 'text/json':case 'application/json':case 'application/ld+json': mime="json"; 
 	break;case 'text/javascript': mime="script";
@@ -367,25 +383,26 @@ network.opener=function(event){let element=event.target;switch(types.string){cas
 	try{window.fetch(request).then((header)=>{network.requests[name].status=header.status;network.responses[name].headers={}; // Call Fetch & Handle Headers
 			header.headers.forEach((item,key)=>{if((!!item)&&(typeof key==types.string)){network.responses[name].headers[key.toLowerCase()]=item;};}); // Copy Headers
 			network.responses[name]=Object.assign(network.responses[name],{status:header.status,type:(!!network.responses[name].headers['content-type']?(network.responses[name].headers['content-type'].split(';')[0].toLowerCase().trim()):'')});
-			switch(header.status){case 200: if(header.ok){network.capable=true;}; // Has Response?
+			if(header.status>0){network.capable=true;}; // Non-Zero Response = Capable
+			switch(header.status){case 0: network.capable=false; // Notify Network Restrictions
+			break;case 200: // Has Response?
 				if(network.requests[name].type==network.responses[name].type){ // Matching Mime Types
 					switch(mime){case "text":case "html":case "xml":case "css":case "script": if(1){return header.text();}; // Textual Type
 					break;case "json": if(1){return header.json();};
 					break;case "form": if(1){return header.formData();};
 					break;case "image":case "font":case "video":case "audio": if(1){return header.bytes();};
 					}; // Collect Datatype
-				}else{problems="Main.JS fetch missmatched mime type; "+network.requests[name].type+" requested but returned "+network.responses[name].type}
-			break;case 201:case 204: if(header.ok){network.capable=true;}; // ReST Response
+				}else{warnings="Main.JS fetch missmatched mime type; "+network.requests[name].type+" requested but returned "+network.responses[name].type}
+			break;case 201:case 204: if(header.ok){}; // ReST Response
 			break;case 301:case 302:case 308: // Handle Redirects (response url)
-			break;case 0: if(typeof network.capable!=types.boolean){network.capable=false;}; // Notify Network Restrictions
-			default: // All HTTP Responses
-				if((typeof network.capable!=types.boolean)&&(!network.responses[name].type)){network.capable=false;}; // Missing Date Response
+			default: // Other HTTP Responses
 			}; // Notify Limitations
-			if((!network.capable)&&(window.location.protocol==proto.file)){console.log("%cMain.JS is running in DESIGNER MODE;","color:goldenrod;font-size:16px;font-weight:bold;text-shadow:2px 2px 0 #000;","\nThis mode is perfect for content and theme development, if you would like to switch to developer mode please see mainjs.org/dev-mode");browser.online=false;};
-		}).then((response)=>{if(browser.online===null){if(!response){browser.online=false;network.loading=false;return;}else if(network.capable){browser.online=true;};}else if((browser.online===false)&&(typeof response!='undefined')){browser.online=true;}else if(browser.online===false){network.loading=false;return;};
-			if(problems!=''){console.warn(problems);network.loading=false;return false;}; // Upstream Problem (already Identified)
-			if(!browser.online){console.warn('Main.JS could not parse fetch resources from '+(main.base+url)+', because the browser is in running offline mode; please see mainjs.org/dev-mode.');network.loading=false;return false;}; // Offline Mode
+			if((window.location.protocol==proto.file)&&(!network.capable)){console.log("%cMain.JS is running in DESIGNER MODE;","color:goldenrod;font-size:16px;font-weight:bold;text-shadow:2px 2px 0 #000;","\nThis mode is perfect for content and theme development, if you would like to switch to developer mode please see mainjs.org/dev-mode");};
+		}).then((response)=>{if((url==network.test)&&(typeof response=='undefined')){browser.online=false;network.loading=false;if((network.capable)&&(window.location.protocol!=proto.file)&&(main.application.contact.enabled)){main.button.custom.contact();};return;}; // Offline Mode (during test)
+			if(warnings!=''){console.warn(warnings);network.loading=false;return false;}; // Upstream Problem (already Identified)
+			if(!network.capable){console.warn('Main.JS could not parse fetch resources from '+(main.base+url)+', because the browser is in running offline mode; please see mainjs.org/dev-mode.');network.loading=false;return false;}; // Offline Mode
 			if(typeof response=='undefined'){console.warn('Main.JS was not able to fetch resources from '+(main.base+url));network.loading=false;return false;}; // Unexpected Problem
+			if((url==network.test)&&(network.capable)){browser.online=true;}; // Online Mode
 			try{ /* Main.JS Response Handler */
 				switch(mime){case 'text': network.responses[name].text={};response.split(proto.br).forEach((item,line)=>{if(!!item){network.responses[name].text[line]=item.split(':');};}); // Fetch Text
 				break;case 'html': network.responses[name].document=parser.parseFromString(response,network.responses[name].type);network.renderer(name); // Fetch & Apply HTML
@@ -394,7 +411,7 @@ network.opener=function(event){let element=event.target;switch(types.string){cas
 				break;default: // Throw Warning
 				};network.loading=false; // Finish Page Hydration
 			}catch(error){network.loading=false;console.warn('Main.JS could not parse fetch resources from '+(main.base+url)+', cause: '+error);}; // Throw Parse Error
-			if((url==network.test)&&(network.capable)&&(!browser.online)){console.log("%cNOTE: please be careful when pasting in console;","color:goldenrod;font-size:16px;font-weight:bold;text-shadow:2px 2px 0 #000;");};
+			if((url==network.test)&&(network.capable)&&(browser.online)&&(window.location.protocol!=proto.file)){console.log("%cNOTE: please be careful when pasting in console;","color:goldenrod;font-size:16px;font-weight:bold;text-shadow:2px 2px 0 #000;");};
 		}).catch((error)=>{network.loading=false; // Resolve Errors
 			switch(url){case null:case network.test: // Suppress Warning
 			break;default: console.warn('Main.JS could not fetch network resources from '+(main.base+url)+', cause: '+error); // Throw Network Warning
@@ -451,8 +468,6 @@ main.hydrate.load=[function(){ // Reload Hydration
 		/* Main.JS Session Properties */
 		document.querySelectorAll('meta[property]').forEach((meta)=>{if((typeof meta.attributes==types.object)&&(typeof meta.attributes.property==types.object)&&(typeof meta.attributes.content==types.object)&&(typeof meta.attributes.content.value==types.string)){
 			switch(meta.attributes.property.value){case null: // Ignore
-			break;case "main.menu.origin": if(main.menu.origin!=meta.attributes.content.value.toLowerCase()){main.menu.origin=meta.attributes.content.value.toLowerCase();main.menu.loaded=false;};main.menu.enabled=true; // Enable Menu & Origin
-			break;case "main.menu.source": if(main.menu.source!=meta.attributes.content.value){main.menu.source=meta.attributes.content.value;main.menu.loaded=false;};main.menu.enabled=true; case "main.menu.enabled": main.menu.enabled=true; // Default True
 			break;case "main.timers.delay": main.timers.delay=Math.max(100,Math.min(5000,parseInt(meta.attributes.content.value)))||500;
 			break;case "main.font":case "main.font.provider":case "main.font.config.provider": main.font.config.provider=meta.attributes.content.value.toLowerCase();
 				if(font.preset[main.font.config.provider]){main.font.config=Object.assign(font.preset[main.font.config.provider],main.font.config);};
@@ -505,13 +520,13 @@ main.hydrate.load=[function(){ // Reload Hydration
 		if(!!element.attributes['srcset'].value){element.attributes['srcset'].value.split(',').forEach((url)=>{url=url.trim();if(newset.length){newset+=',';};if(url.substring(0,1)==proto.fs){url=url.substring(1);};newset+=url;});};element.attributes['srcset'].value=newset; // Refactor Source Set
 	};});document.querySelectorAll('[src^="/"],[src^="\t/"').forEach((element)=>{if((typeof element==types.object)&&(typeof element.attributes==types.object)){ // Load Sources
 		if((!!element.attributes['src'].value)&&(element.attributes['src'].value.substring(0,1)==proto.fs)){element.attributes['src'].value=element.attributes['src'].value.substring(1);}; // Refactor Sources
-	};});document.querySelectorAll('[href*="//"]:not(base,link,[rel*="noopener"]),[href*=":"]:not(base,link,[rel*="noopener"])').forEach((element)=>{if((typeof element==types.object)&&(typeof element.attributes==types.object)){ // Check Oubound Links
+	};});document.querySelectorAll('[href*="//"]:not(base,link,[rel*="noopener"],[rel*="relative"]),[href*=":"]:not(base,link,[rel*="noopener"],[rel*="relative"])').forEach((element)=>{if((typeof element==types.object)&&(typeof element.attributes==types.object)){ // Check Oubound Links
 		if((!!element.attributes[attribute.href].value)&&(main.base.toLowerCase()!=element.attributes[attribute.href].value.toLowerCase().substring(0,main.base.length))){element.setAttribute(attribute.rel,((!!element.attributes[attribute.rel]?element.attributes[attribute.rel].value:'')+proto.n+'noopener').trim());};  // Valid Outbound Link
 	};});document.querySelectorAll('[href^="#"]:not(base,link,[rel*="opener"])').forEach((element)=>{if((typeof element==types.object)&&(typeof element.attributes==types.object)){ // Check Bookmarks
 		if((!!element.attributes[attribute.href].value)&&(element.attributes[attribute.href].value.substring(0,1)=='#')){element.setAttribute(attribute.href,main.page.path+element.attributes[attribute.href].value);element.setAttribute(attribute.rel,((!!element.attributes[attribute.rel]?element.attributes[attribute.rel].value:'')+proto.n+'opener').trim());}; // Refactor Bookmarks
 	};}); // Paths Done, Next Clones:
 	document.querySelectorAll('clone[to],clone[data-to],.clone[to],.clone[data-to]').forEach((element,source)=>{if((!!element)&&(typeof element==types.object)&&(typeof element.attributes==types.object)&&(typeof element.children==types.object)&&(element.children.length>0)){ // Manage Clone Containers
-		let to=element.attributes['data-to'].value||element.attributes['to'].value,from=element.tagName.toLowerCase()+(!!element.id?'#'+element.id:'')+(!!element.className.replace('clone','').trim()?'.'+element.className.replace('clone','').trim().replace(' ','.').replaceAll('..','.')+'.clone:nth-of-type('+(source+1)+')':'.clone:nth-of-type('+(source+1)+')'); // From Source Container
+		let to=element.attributes['data-to'].value||element.attributes['to'].value,from=element.tagName.toLowerCase()+(!!element.id?'#'+element.id:'')+(!!element.className.replace('clone','').trim()?'.'+element.className.replace('clone','').trim().replaceAll(' ','.').replaceAll('..','.')+'.clone:nth-of-type('+(source+1)+')':'.clone:nth-of-type('+(source+1)+')'); // From Source Container
 		if(to.trim()!=''){let destinations=document.querySelectorAll(to.trim());if((!!destinations)&&(typeof destinations==types.object)){ // Valid Destinations
 			Object.entries(element.children).forEach((child,index)=>{if((!!child)&&(typeof child==types.object)&&(typeof child[1]==types.object)){child=child[1]; // Iterate Children
 				destinations.forEach((destination,copy)=>{if((!!destination)&&(typeof destination==types.object)){ // Iterate Destination
@@ -534,8 +549,24 @@ main.hydrate.load=[function(){ // Reload Hydration
 	Object.entries(main.dismiss).forEach(([item])=>{let element=false;
 		if((typeof main.dismiss[item]==types.object)&&(typeof main.dismiss[item].id==types.string)){element=document.getElementById(main.dismiss[item].id);if((typeof element==types.object)&&(element!=null)){element.remove();};};
 	});
+}];main.hydrate.slideshow=[function(){if(!main.body.loaded){return;}; /* Main.JS Slideshow */
+	document.querySelectorAll('.container.slideshow:not(['+attribute.role+'="'+main.slideshow.role+'"]),container.slideshow:not(['+attribute.role+'="'+main.slideshow.role+'"])').forEach((element)=>{if((!!element.id)&&(typeof element.id==types.string)){let id=element.id.replace(regex.safe,'');if(id.length>0){ // Must Have ID
+		let selector=element.tagName.toLowerCase()+(!!element.id?'#'+element.id:'')+(!!element.className.trim()?'.'+element.className.trim().replaceAll(' ','.'):''); // Get Selector
+		let duration=(!!element.attributes['data-duration'])?element.attributes['data-duration'].value||'5':(!!element.attributes['duration'])?element.attributes['duration'].value||'5':'5',transition=(!!element.attributes['data-transition'])?element.attributes['data-transition'].value||'1':(!!element.attributes['transition'])?element.attributes['transition'].value||'1':'1',animation='fade'; // Defaults
+		if(duration.search('ms')>=0){duration=parseInt(duration);}else{duration=parseInt(duration)*1000;};duration=(duration>=1000)?duration:1000; // Set Duration
+		if(transition.search('ms')>=0){transition=(parseInt(transition)/2);}else{transition=(parseInt(transition)/2)*1000;};transition=(transition>=50)?transition:50;transition=(transition<=duration/2)?transition:parseInt(duration/2); // Set Transitions
+		main.slideshow.shows[id]={slides:0,total:0,'duration':duration,'transition':transition,'animation':animation,indexes:[]};let show=main.slideshow.shows[id]; // Declare Slide Show Object
+		Object.entries(element.children).forEach((slide,index)=>{if((!!slide)&&(typeof slide==types.object)&&(typeof slide[1]==types.object)){slide=slide[1]; // Iterate Slides
+			switch(slide.tagName.toLowerCase()){case types.img:case types.figure:case types.picture: show.indexes[index]={sort:index,'duration':duration,'transition':transition};show.slides+=1; // Valid Slide Element
+				css.add("slideshow-"+id+"-"+show.slides,selector+' > img:nth-child('+show.slides+'), '+selector+' > figure:nth-child('+show.slides+'), '+selector+' > picture:nth-child('+show.slides+') { animation-delay: '+show.total+'ms !important; }');show.total+=duration+transition;
+			}; // Done Slides
+		};}); // Slides Done; Add Animation
+		css.add("slideshow-"+id+"-keyframes",'@keyframes fade'+id+' { \n  0% { opacity: 0; z-index: calc(var(--z-limit,10) - 6); }\n  '+((100/show.slides)*((transition*2)/duration))+'% { opacity: 1; z-index: calc(var(--z-limit,10) - 5); }\n  '+((100/show.slides)-((100/show.slides)*((transition*2)/duration)))+'% { opacity: 1; z-index: calc(var(--z-limit,10) - 5); }\n  '+(100/show.slides)+'% { opacity: 0; z-index: calc(var(--z-limit,10) - 6); }\n  100% { opacity: 0; z-index: calc(var(--z-limit,10) - 6); }\n}');
+		css.add("slideshow-"+id,selector+' > img, '+selector+' > figure, '+selector+' > picture { transition: opacity '+(show.transition)+'ms, z-index '+show.transition+'ms; animation: fade'+id+' '+show.total+'ms infinite; }');
+		element.setAttribute(attribute.role,main.slideshow.role);element.setAttribute("aria-roledescription",main.slideshow.description); // Mark Role
+	};};});main.slideshow.loaded=true; // Set Loaded
 }];main.hydrate.switch=[function(){if(!main.body.loaded){return;}; /* Main.JS Switch */
-	document.querySelectorAll('input[type="checkbox"]:not([aria-checked]),[role="switch"]:not([aria-checked])').forEach((element)=>{if(typeof element.checked==types.boolean){element.setAttribute(main.switch.check,element.checked);}else if(typeof element.id==types.string){element.setAttribute(main.switch.check,'');};element.addEventListener(types.click,main.switch.click);element.addEventListener(types.keydown,main.switch.click);});
+	document.querySelectorAll('input[type="checkbox"]:not(['+main.switch.check+']),[role="switch"]:not(['+main.switch.check+'])').forEach((element)=>{if(typeof element.checked==types.boolean){element.setAttribute(main.switch.check,element.checked);}else if(typeof element.id==types.string){element.setAttribute(main.switch.check,'');};element.addEventListener(types.click,main.switch.click);element.addEventListener(types.keydown,main.switch.click);});
 	switch(arguments[0]){case "color-scheme": main.user.light=!main.user.light;break;case "reader-scheme": main.user.reader=!main.user.reader;break;case "nocode-mode": main.user.nocode=!main.user.nocode; // Action Changes (if necessary)
 	};if((main.body[types.colorscheme])&&(typeof main.body[types.colorscheme].getAttribute==types.function)&&(main.body[types.colorscheme].getAttribute(main.switch.check)!==main.user.light)){main.body[types.colorscheme].setAttribute(main.switch.check,main.user.light); // Color Scheme
 		if((!main.user.light)){if(document.body.classList.contains(classes.light)){document.body.classList.remove(classes.light);};}else{if(!document.body.classList.contains(classes.light)){document.body.classList.add(classes.light);};};
@@ -545,7 +576,7 @@ main.hydrate.load=[function(){ // Reload Hydration
 		if((!main.user.nocode)){if(document.body.classList.contains(classes.nocode)){document.body.classList.remove(classes.nocode);};}else{if(!document.body.classList.contains(classes.nocode)){document.body.classList.add(classes.nocode);};};
 	};main.switch.loaded=true;
 }];main.hydrate.button=[function(){if(!main.body.loaded){return;}; /* Main.JS Button */
-	document.querySelectorAll('button:not([aria-pressed]),input[type="button"]:not([aria-pressed]),input[type="reset"]:not([aria-pressed]),[role="button"]:not([aria-pressed])').forEach((element)=>{if(typeof element.id==types.string){element.setAttribute(main.button.press,'');element.addEventListener(types.click,main.button.click);element.addEventListener(types.keydown,main.button.click);};});
+	document.querySelectorAll('button:not(['+main.button.press+']),input[type="button"]:not(['+main.button.press+']),input[type="reset"]:not(['+main.button.press+']),[role="button"]:not(['+main.button.press+'])').forEach((element)=>{if(typeof element.id==types.string){element.setAttribute(main.button.press,'');element.addEventListener(types.click,main.button.click);element.addEventListener(types.keydown,main.button.click);};});
 	main.button.loaded=true;
 }];main.hydrate.resize=[function(){if((!main.body.loaded)||(main.timers.resizing)){return;};main.timers.resizing=true;
 	if((main.body.footer)&&(css.loaded)){let footRect=main.body.footer.getBoundingClientRect()||{top:0};main.page=Object.assign(main.page,{scrollHeight:parseInt(footRect.top+main.page.scrollTop),height:parseInt(window.innerHeight),width:parseInt(window.innerWidth)});};
@@ -592,6 +623,7 @@ main.hydrate.load=[function(){ // Reload Hydration
 }];main.hydrate.focus=[function(){main.page.focused=true;
 }];main.hydrate.click=[function(){ // Focus Collection
 	if(document.body.classList.contains(classes.menu)){document.body.classList.remove(classes.menu);main.menu.visible=false;}; // Hide Menu
+	if(document.body.classList.contains(classes.application)){document.body.classList.remove(classes.application);main.application.visible=false;}; // Hide Application
 }];main.hydrate.render=function(){ // Update Listeners
 	Object.entries(main.hydrate).forEach((item)=>{let key=item[0]; // Iterate Function Names
 		if((!!key)&&(typeof main.hydrate[key]==types.object)){ // Is Valid Function
@@ -683,7 +715,7 @@ main.events.gtag=function(){if(window[main.events.config.datalayer]){ //
 	});
 }; 
 
-/* Main.JS User Properties */
+/* Main.JS User & Landing Properties */
 document.querySelectorAll('meta[property]').forEach((meta)=>{
 	switch(meta.attributes.property.value){case null: // Ignore
 	break;case "main.events.config":case "main.events.config.preset": main.events.config.preset=meta.attributes.content.value.toLowerCase();
@@ -694,6 +726,7 @@ document.querySelectorAll('meta[property]').forEach((meta)=>{
 	break;case "main.consent.necessary": if(main.consent.config){main.consent.config.necessary=meta.attributes.content.value||consent.terms.denied;};
 	break;case "main.consent.preset": if(main.consent.config){main.consent.config.preset=meta.attributes.content.value||consent.terms.denied;};
 		if(!consent.preset[main.consent.config.preset]){main.consent.config.preset=consent.terms.denied;};
+	break;case 'main.meta.canonical.noindex': if(0!=main.meta.canonical.href.toLowerCase().search((main.base+main.path).toLowerCase())){main.meta.robots.content=main.meta.robots.content.replaceAll(/\b(all|index)\b/gi,'noindex');}; // Non-canonicals Visibility
 	};
 }); // Property Bounds & Defaults
 if((main.events.config.id)&&(main.events.config.gateway)){ // Valid Tracking, Create Tag Manager
@@ -709,7 +742,7 @@ if((main.events.config.id)&&(main.events.config.gateway)){ // Valid Tracking, Cr
 	main.events.gtag(track.datalayer[main.events.config.preset]); // Default Datalayer
 	create.track=window.document.createElement('script'),main.events.config.options+=main.events.config.datalayer!='dataLayer'?'&l='+main.events.config.datalayer:'';create.track.async=true;
 	create.track.src=main.events.config.gateway+main.events.config.type+main.events.config.id+main.events.config.options;
-	if((!!create.track)&&(!create.track.loaded)&&(window.location.protocol==proto.https)&&(main.user.persistence)&&((network.capable))){create.track.loaded=true;document.head.appendChild(create.track);}; // Track Only Safe
+	if((!!create.track)&&(!create.track.loaded)&&(window.location.protocol==proto.https)&&(main.user.persistence)){create.track.loaded=true;document.head.appendChild(create.track);}; // Track Only Safe
 	if(typeof gtag!=types.function){gtag=main.events.gtag;}; // Declare Global Gtag Function
 };
 
