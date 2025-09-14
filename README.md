@@ -26,6 +26,10 @@ Several quick start options are available:
 
 
 ## Change log
+Version 0.8 - Personalisation Update 
+ - Global For attribute and slideshow flexibility
+ - Better error handling
+
 Version 0.7 - Headless Update 
  - New Fetcher() Functions
  - Headless Navigation and Rendering Support
@@ -38,7 +42,6 @@ Version 0.6 - Consent Release
 ## Development roadmap
  - Version 1.0 - **Full Release**
  - Version 0.9 - Analytics & A/B Testing Update 
- - Version 0.8 - Personalisation Update 
 
 
 ### About the developer
