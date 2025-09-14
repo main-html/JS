@@ -3,19 +3,19 @@
 <head>
 	<!-- Main.HTML Page Customisation: START -->
 	<!-- Page Encoding -->
-	<meta charset="UTF-8" />
+	<meta charset="UTF-8">
 	
 	<!-- Page Meta -->
 	<title>Blank Main JS Snippet</title>
 	<meta name="author" content="Your Name">
-	<meta name="website" content="Your Website" />
-	<meta name="description" content="Blank test page for Main JS Project including the snippet for maximum performance!" />
-	<meta name="robots" content="all" />
-	<link rel="canonical" href="https://www.mainjs.org/install-snippet.html" />
+	<meta name="website" content="Your Website">
+	<meta name="description" content="Blank test page for Main JS Project including the snippet for maximum performance!">
+	<meta name="robots" content="all">
+	<link rel="canonical" href="https://www.mainjs.org/install-snippet.html">
 	<noscript><base href="https://www.mainjs.org/"></noscript>
 	
 	<!-- Custom Main.HTML & Main.JS -->
-	<meta property="main.js.example" content="new value here" />
+	<meta property="main.js.example" content="new value here">
 	<!-- Main.HTML Page Customisation: END -->
 	
 	<!-- Main.JS Snippet: START -->
@@ -23,9 +23,9 @@
 		# Main JS is a modern, lightweight and portable website JavaScript framework, Copyright (C) 2025 Andy Futcher. See <https://mainjs.org/> for more
 		# This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 		# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
-		# Main.JS not modified from original. Date: 2025-09-05 ### */
-		var main={version:{sem:{main:0,minor:7,patch:12},branch:'main',htmlless:true},meta:{},js:{proto:{fs:'/',fs2:'//',https:'https:',http:'http:',file:'file:'},create:{base:document.createElement('base'),theme:document.createElement('link'),script:document.createElement('script'),style:document.createElement("style")},css:{loaded:false},regex:{base:/.*(\:\/\/|public\B|-html\b|-js\b|-dev\b|-rc\b|-main\b|-com\b|-com-[a-z]|-co-[a-z])[a-zA-Z0-9\-\_\.]*/i}}}; // Declare Main Object
-		main.meta.canonical=document.querySelector('link[rel="canonical"]')||{href:null};main.meta.canonical.href=main.meta.canonical.href||main.meta.canonical.content||window.location.pathname.match(main.js.regex.base)[0]; // Webpages Canonical URL
+		# Main.JS not modified from original. Date: 2025-09-15 ### */
+		var main={version:{sem:{main:0,minor:8,patch:0},branch:'main',htmlless:true},meta:{},js:{proto:{fs:'/',fs2:'//',https:'https:',http:'http:',file:'file:'},create:{base:document.createElement('base'),theme:document.createElement('link'),script:document.createElement('script'),style:document.createElement("style")},css:{loaded:false},regex:{base:/.*(\:\/\/|public\B|-html\b|-js\b|-dev\b|-rc\b|-main\b|-com\b|-com-[a-z]|-co-[a-z])[a-zA-Z0-9\-\_\.]*/i}}}; // Declare Main Object
+		main.meta.canonical=document.querySelector('link[rel="canonical"]')||{href:null};main.meta.canonical.href=main.meta.canonical.href||main.meta.canonical.content||window.location.href.split('?')[0]; // Webpages Canonical URL
 		main.meta.theme=document.querySelector('meta[name="theme"]')||document.querySelector('meta[property$=".theme"]')||{content:null};main.meta.theme.content=main.meta.theme.content||main.meta.theme.href||'default.css'; // Webpages Canonical URL
 		switch(window.location.protocol){case main.js.proto.https:main.js.create.base.href=(window.location.origin+window.location.pathname).match(main.js.regex.base)[0]+main.js.proto.fs; // Origin Execution
 		break;case main.js.proto.file:main.js.create.base.href=(window.location.protocol+main.js.proto.fs2+window.location.pathname).match(main.js.regex.base)[0]+main.js.proto.fs; // Local Execution
@@ -41,9 +41,9 @@
 
 	<!-- Main.HTML Viewport -->
 	<meta name="generator" content="Main HTML">
-	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<meta name="handheldfriendly" content="true" /><meta name="mobile-web-app-capable" content="yes" />
-	<link rel="icon" href="favicon.svg" /><link rel="apple-touch-icon" href="favicon.svg">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="handheldfriendly" content="true"><meta name="mobile-web-app-capable" content="yes">
+	<link rel="icon" href="favicon.svg"><link rel="apple-touch-icon" href="favicon.svg">
 </head>
 <body>
 	<!-- Main.HTML Example Page -->

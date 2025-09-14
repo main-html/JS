@@ -2,4 +2,4 @@ Simply extract the theme to this folder, once extracted you can use either the M
 
 1. <meta name="theme" content="theme_name_here.css">
     -- OR --
-2. <meta property="main.css.theme" content="theme-folder_name_here/default.css" />
+2. <meta property="main.css.theme" content="theme-folder_name_here/default.css">
