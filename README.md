@@ -27,6 +27,7 @@ Several quick start options are available:
 
 ## Change log
 Version 0.8 - Personalisation Update 
+ - No trailing slash pathing
  - Global For attribute and slideshow flexibility
  - Better error handling
 

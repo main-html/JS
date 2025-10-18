@@ -9,17 +9,17 @@ main=window['main']||{};main.js=Object.assign({create:{},inherit:{}},main.js||{}
 switch(typeof main.js.loaded){case 'boolean':if(main.js.timestamp.loaded){console.warn("Main.JS has been loaded more than once, check the <head> for duplicate snippet installations or main.js script requests.");};case 'object':break;case 'undefined':main.js.loaded=null;default: // Loading Wrapper
 
 /* Main.JS Declarations */
-main.js.version=Object.assign({sem:{main:0,minor:8,patch:0},branch:'main'},main.js.version||{});let version=main.js.version; // This Library Version
+main.js.version=Object.assign({sem:{main:0,minor:8,patch:4},branch:'main'},main.js.version||{});let version=main.js.version; // This Library Version
 main.js.inherit=Object.assign({parent:function(prefix,js='js'){if(!js){main[prefix]=main[prefix]||{};return main[prefix];}else{main[js][prefix]=main[js][prefix]||{};};return main[js][prefix];},object:function(object,empty={}){if((!!object)&&(typeof object==types.object)){return object;};return empty;},errors:function(errors,parent){if((!!errors)&&(!!errors.length)){console.warn(errors);};}},main.js.inherit);let inherit=main.js.inherit; // Main.JS Inherit Function
 main.js=Object.assign(main.js,{loading:false,timestamp:{init:parseInt(Date.now())}});let timestamp=main.js.timestamp; // Common Elements;
-main.js.proto=Object.assign({https:'https:',http:'http:',file:'file:',fs:'/',fs2:'//',s:'s',p:'.',px:'px',pc:"%",q:'?',a:'&',qa:'?&',e:'=',d:'-',n:' ',nb:"\u00A0",br:"\n",t:"true",f:"false"},inherit.parent('proto'));let proto=main.js.proto; // Common Protcols
+main.js.proto=Object.assign({https:'https:',http:'http:',file:'file:',fs:'/',fs2:'//',s:'s',p:'.',px:'px',pc:"%",q:'?',a:'&',qa:'?&',e:'=',d:'-',n:' ',nb:"\u00A0",br:"\n",t:"true",f:"false",html:"main.html"},inherit.parent('proto'));let proto=main.js.proto; // Common Protcols
 main.js.types=Object.assign({window:"window",document:"document",div:"div",img:"img",figure:"figure",picture:"picture",ol:"ol",button:"button",logo:"logo",search:"search",links:"links",base:"base",main:"main",string:"string",boolean:"boolean",number:"number",integer:"integer",decimal:"decimal",currency:"currency",function:"function",object:"object",aliases:"aliases",click:"click",keydown:"keydown",mousedown:"mousedown",mouseover:"mouseover",mouseout:"mouseout",body:"body",nav:"nav",footer:"footer",breadcrumbs:"breadcrumbs",navigation:"navigation",dialog:"dialog",alertdialog:"alertdialog",status:"status",menu:"menu",searchbox:"searchbox",application:"application",account:"account",region:"region",colorscheme:"color-scheme",readerscheme:"reader-scheme",nocodemode:"nocode-mode",hydrate:"hydrate",internal:"internal"},inherit.parent('types'));let types=main.js.types; // Common Types
 main.js.classes=Object.assign({top:"top",scrolled:"scrolled",bottom:"bottom",landscape:"landscape",portrait:"portrait",light:"light",reader:"reader",nocode:"nocode",hide:"hide",menu:"menu",application:"application",hover:"hover"},inherit.parent('classes'));let classes=main.js.classes; // Common Classes
 main.js.listen=Object.assign({parent:{load:'window',readystatechange:'document',resize:'window',scroll:'body',click:'main',mouseleave:'document',mouseenter:'document',blur:'window',focus:'window',beforeunload:'window',unload:'window',popstate:'window'},passively:{load:true,mouseleave:true,mouseenter:true,blur:true,focus:true,beforeunload:true,unload:true,popstate:true,click:true}},inherit.parent('listen'));let listen=main.js.listen; // Common Listener
 main.js.attribute=Object.assign({class:"class",id:"id",href:"href",rel:"rel",role:"role",link:"link",loading:"loading",lazy:"lazy",lang:"lang",region:"region",dialect:"dialect",bucket:"bucket",second:"second",delay:"delay",duration:"duration",open:"open"},inherit.parent('attribute'));let attribute=main.js.attribute; // Common attribute
 main.js.regex=Object.assign({base:/.*(\:\/\/|public\B|-html\b|-js\b|-dev\b|-rc\b|-main\b|-com\b|-com-[a-z]|-co-[a-z])[a-zA-Z0-9\-\_\.]*/i,domain:/.*\/\/([^:\/\?,]*)/,tld:/(.*\/\/)[^\/]+/g,path:/^[a-zA-Z0-9_~\%\-\.\/]*/i,safe:/[^a-zA-Z0-9_\-]/g,urls:/[^a-zA-Z0-9_~\%\-\.\/\:\?\&\=\@]/g,scale:/scale\(.*\)/gi},inherit.parent('regex'));let regex=main.js.regex; //
 main.js.cookie=Object.assign({policy:{'Max-Age':31536000,SameSite:"Lax"},Secure:true},inherit.parent('cookie'));let cookie=main.js.cookie; // Common Cookie Settings
-main.js.browser=Object.assign({online:null,locale:Intl.DateTimeFormat().resolvedOptions()||{},languages:navigator.languages||['en'],name:((/Firefox/.test(navigator.userAgent)||/FxiOS/.test(navigator.userAgent||''))?'Firefox':(/Apple Computer/.test(navigator.vendor||''))?'Safari':'Chrome')},inherit.parent('browser'));let browser=main.js.browser;
+main.js.browser=Object.assign({online:null,locale:Intl.DateTimeFormat().resolvedOptions()||{},languages:navigator.languages||['en'],name:((/Firefox/.test(navigator.userAgent)||/FxiOS/.test(navigator.userAgent))?'Firefox':(/Apple Computer/.test(navigator.vendor))?'Safari':(!!window.chrome||/CriOS/.test(navigator.userAgent))?'Chrome':'MsEdge')},inherit.parent('browser'));let browser=main.js.browser;
 main.js.network=Object.assign({loading:false,capable:null,requests:{},responses:{},test:'humans.txt'},inherit.parent('network'));let network=main.js.network; // Networking Functions
 main.js.font=Object.assign({config:{provider:''},preset:{google:{gateway:'https://fonts.googleapis.com/css2?',prefix:"&family=",suffix:"",options:"&display=swap",separator:':'}}},inherit.parent('font'));let font=main.js.font; // Main.JS Defaults
 main.js.track=Object.assign({domains:[],config:{id:'',preset:'gtm',autosync:true},parameter:"_mid",preset:{gtm:{datalayer:"dataLayer",gateway:'https://www.googletagmanager.com/gtm.js?',type:"id=",options:''},gtag:{datalayer:"dataLayer",gateway:'https://www.googletagmanager.com/gtag/js?',type:"id=",options:''}},datalayer:{gtm:{event:'gtm.js','gtm.start':new Date().getTime()},gtag:['js',new Date()]}},inherit.parent('track'));let track=main.js.track; // Main.JS Defaults
@@ -180,7 +180,7 @@ css.add=function(id,rule=''){if(typeof id!=types.string){return false;};id=id.re
 
 /* Main.JS Localisation */
 if(main.user.persistence){main.session.language=lookup.language[main.user.locale]||lookup.language[main.session.lang]||lookup.language[main.session.hl]||"English";}else{main.session.language=lookup.language[main.session.hl]||lookup.language[main.session.lang]||lookup.language[main.user.locale]||"English";}; // Update Language (fallbacks)
-main[types.aliases]=main[types.aliases]||{};main.aliases=main[types.aliases];main.aliases['main.html']=false;main.aliases['main']=false;main.aliases['template.html']=false;
+main[types.aliases]=main[types.aliases]||{};main.aliases=main[types.aliases];main.aliases[proto.html]=false;main.aliases['main']=false;main.aliases['template.html']=false;
 
 /* Main.JS Timers & Events */
 main.timers={delay:500,resizing:false};main.timers.delay=Math.max(100,Math.min(5000,parseInt(main.timers.delay)))||500;
@@ -350,13 +350,18 @@ consent.banner=function(){if(!main.body.loaded){return;};let show=false,type=nul
 network.opener=function(event){let element=event.target;switch(types.string){case typeof element.href:break;case typeof element.parentElement.href:element=event.target.parentElement;break;case typeof element.parentElement.parentElement.href:element=event.target.parentElement.parentElement;};
 	if((typeof event.type!=types.string)||(!element.attributes[attribute.href])){return;};let href=element.attributes[attribute.href].value,rel=(!!element.attributes[attribute.rel])?element.attributes[attribute.rel].value:'';
 	switch(event.type.toLowerCase()){case types.mousedown: // Right-click Handler
-		if((event.button==2)&&(window.location.protocol==proto.file)&&((href.length==0)||(href.substring(href.length-1)==proto.fs))){element.setAttribute(attribute.href,href+'main.html');}; // Direct Pathing
+		if((event.button==2)&&(window.location.protocol==proto.file)){ // Right Click Direct Pathing
+			if((href.length==0)||(href.substring(href.length-1)==proto.fs)){element.setAttribute(attribute.href,href+proto.html);}else // Trailing Slash
+			if((href.substring(href.length-5)!='.html')&&(href.substring(href.length-4)!='.htm')){element.setAttribute(attribute.href,href+proto.fs+proto.html);}; // No Trailing Slash
+		};
 	break;case types.keydown: // Keyboard Handler
 		if(typeof event.key==types.string){switch(event.key.toLowerCase()){case "enter": break;default: return;};}else{return;}; // Only Specific Keys
 	case types.click: // Click Handler (no Break)
 		if((/\brelative\b/i.test(rel))&&(regex.tld.test(href))){href=href.replace(regex.tld,'').substring(1);element.setAttribute(attribute.href,href);}; // Convert to Relative Path (has local equiv.)
-		if((window.location.protocol==proto.file)&&((href.length==0)||(href.substring(href.length-1)==proto.fs))){element.setAttribute(attribute.href,href+'main.html');href+='main.html';}; // Direct Pathing
-		if(network.capable){;if(network.fetcher(href,{method:'GET'},{type:'text/html'})){event.preventDefault();};}; // Call Fetch & Suppress Click
+		if(window.location.protocol==proto.file){ // Direct Pathing
+			if(((href.length==0)||(href.substring(href.length-1)==proto.fs))){element.setAttribute(attribute.href,href+proto.html);href+=proto.html;}else // Trailing Slash
+			if((href.substring(href.length-5)!='.html')&&(href.substring(href.length-4)!='.htm')){element.setAttribute(attribute.href,href+proto.fs+proto.html);href+=proto.fs+proto.html;}; // No Trailing Slash
+		};if(network.capable){;if(network.fetcher(href,{method:'GET'},{type:'text/html'})){event.preventDefault();};}; // Call Fetch & Suppress Click
 	}; // Interactions Caught
 };network.renderer=function(name){if((!main.user.persistence)||(network.capable==false)){return;};name=name.replace(regex.urls,''); // Fetch Parser
 	if((typeof network.responses[name]!=types.object)||(typeof network.responses[name].url!=types.string)){return;}; // Unknown URL Path
@@ -533,11 +538,7 @@ main.hydrate.load=[function(){ // Reload Hydration
 			};			
 		};}); /* Main.JS Add Aliases */
 		document.querySelectorAll('meta[property^="main.aliases."]').forEach((meta)=>{if((typeof meta.attributes==types.object)&&(typeof meta.attributes.property==types.object)&&(typeof meta.attributes.content==types.object)&&(typeof meta.attributes.content.value==types.string)){
-			meta.attributes.property.value.split('.').forEach((alias)=>{if(typeof alias==types.string){ // Is String
-				switch(alias){case '':case types.main:case types.aliases:case null: // Ignore
-				break;default: main.aliases[alias]=meta.attributes.content.value; // Add Valid Alias
-				};
-			};});
+			main.aliases[meta.attributes.property.value.trim().substring(13)||'main']=meta.attributes.content.value; // Add Valid Alias
 		};}); // Property Bounds & Defaults
 		if(!!main.font.config.gateway){main.font.request=main.font.config.gateway;
 			Object.entries(main.font.family).forEach((item)=>{let element=item[0],font=item[1];
@@ -774,7 +775,7 @@ if((main.events.config.id)&&(main.events.config.gateway)){ // Valid Tracking, Cr
 	main.events.gtag(track.datalayer[main.events.config.preset]); // Default Datalayer
 	create.track=window.document.createElement('script'),main.events.config.options+=main.events.config.datalayer!='dataLayer'?'&l='+main.events.config.datalayer:'';create.track.async=true;
 	create.track.src=main.events.config.gateway+main.events.config.type+main.events.config.id+main.events.config.options;
-	if((!!create.track)&&(!create.track.loaded)&&(window.location.protocol==proto.https)&&(main.user.persistence)&&(browser.online)){create.track.loaded=true;document.head.appendChild(create.track);}; // Track Only Safe
+	if((!!create.track)&&(!create.track.loaded)&&(window.location.protocol==proto.https)&&(main.user.persistence)){create.track.loaded=true;document.head.appendChild(create.track);}; // Track Only Safe
 	if(typeof gtag!=types.function){gtag=main.events.gtag;}; // Declare Global Gtag Function
 };
 
