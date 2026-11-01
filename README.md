@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://www.mainjs.org/script/">
-        <img src="https://www.mainjs.org/image/main-js-logo.png" alt="Main JS Logo" width="1260" height="380">
+        <img src="https://www.mainjs.org/images/main-js-logo.png" alt="Main JS Logo" width="1260" height="380">
     </a>
 </p>
 
@@ -48,6 +48,6 @@ Version 0.6 - Consent Release
 ### About the developer
 This project has now merged with [Betterprompt 🚀️ ](https://www.betterprompt.com/)[Rocket](https://github.betterprompt.com/rocket) project and will continue development; see you there!
 
-Copyright (C) 2025 **Andy Futcher**, I am the developer and maintainer of Main JS and Main HTML project and professional analyst at a not-for-profit health insurer.
+Copyright (C) 2025 **Andy Starlord**, I am the developer and maintainer of Main JS and Main HTML project and professional analyst at a not-for-profit health insurer.
 
 Main JS is free and open source and will always be, my goal is to give everyone possible a first class ticket to the most well known and well-written markup language on earth; HTML. This is not just because of the projects chosen licence (GPLv3,) but it's a commitment to remain impartial and community focused and to never sell out or steer Main JS away from the core focus of portability and maintainability.

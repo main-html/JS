@@ -30,4 +30,4 @@
 
 * Thank you to everyone who contributes to making Main JS a better project.
 
-  -- Andy Futcher
+  -- Andy Starlord
